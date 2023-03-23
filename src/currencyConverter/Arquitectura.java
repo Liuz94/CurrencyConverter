@@ -1,6 +1,6 @@
 package currencyConverter;
 
-public class privateStrings {
+public class Arquitectura {
 	private static Object[] possibilitis = {"Conversor Moneda" , "Conversor Temperatura"};
 	
 	private static Object[] possibilitisConversion = {"De Pesos a Dolar", "De Dolar a Euros", "De Dolar a Libras",
@@ -20,4 +20,5 @@ public class privateStrings {
 	public static Object getPossibilitisConversion(int posicion) {
 		return (possibilitis[posicion]);
 	}
+	
 }
