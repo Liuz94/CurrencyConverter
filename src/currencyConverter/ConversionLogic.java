@@ -27,5 +27,6 @@ public class ConversionLogic {
 	public void setProcedimientos(String procedimientos) {
 		Procedimientos = procedimientos;
 	}
+
 	
 }

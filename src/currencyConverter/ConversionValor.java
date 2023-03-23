@@ -1,46 +1,55 @@
 package currencyConverter;
 
 public class ConversionValor {
-	private final double pesosDolar = 0.054;
-	private final double DolarPeos = 4773.00;
-	private final double dolarEuro = 0.92;
-	private final double euroDolar = 1.09;
-	private final double dolarLibras = 0.82;
-	private final double librasDolar = 1.23;
-	private final double dolarYen = 131.44;
-	private final double yenDolar = 0.0076;
-	private final double dolarWonCoreano = 1296.45;
-	private final double wonCoreanoDolar = 0.00077;
-	public double getPesosDolar() {
+	private static double pesosDolar = 0.054;
+	private static double DolarPeos = 4773.00;
+	private static double dolarEuro = 0.92;
+	private static double euroDolar = 1.09;
+	private static double dolarLibras = 0.82;
+	private static double librasDolar = 1.23;
+	private static double dolarYen = 131.44;
+	private static double yenDolar = 0.0076;
+	private static double dolarWonCoreano = 1296.45;
+	private static double wonCoreanoDolar = 0.00077;
+	
+	public static double getPesosDolar() {
 		return pesosDolar;
 	}
-	public double getDolarPeos() {
+
+	public static double getDolarPesos() {
 		return DolarPeos;
 	}
-	public double getDolarEuro() {
+
+	public static double getDolarEuro() {
 		return dolarEuro;
 	}
-	public double getEuroDolar() {
+
+	public static double getEuroDolar() {
 		return euroDolar;
 	}
-	public double getDolarLibras() {
+
+	public static double getDolarLibras() {
 		return dolarLibras;
 	}
-	public double getLibrasDolar() {
+
+	public static double getLibrasDolar() {
 		return librasDolar;
 	}
-	public double getDolarYen() {
+
+	public static double getDolarYen() {
 		return dolarYen;
 	}
-	public double getYenDolar() {
+
+	public static double getYenDolar() {
 		return yenDolar;
 	}
-	public double getDolarWonCoreano() {
+
+	public static double getDolarWonCoreano() {
 		return dolarWonCoreano;
 	}
-	public double getWonCoreanoDolar() {
+
+	public static double getWonCoreanoDolar() {
 		return wonCoreanoDolar;
 	}
-	
-	
+
 }

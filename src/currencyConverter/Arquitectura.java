@@ -18,7 +18,7 @@ public class Arquitectura {
 		return possibilitisConversion;
 	}
 	public static Object getPossibilitisConversion(int posicion) {
-		return (possibilitis[posicion]);
+		return (possibilitisConversion[posicion]);
 	}
 	
 }
