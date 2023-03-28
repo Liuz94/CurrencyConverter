@@ -1,24 +1,13 @@
 package currencyConverter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.swing.JOptionPane;
+import java.text.DecimalFormat;
 
 public class MainMenuInterface {
 	///////////////CONVERSOR MONEDAS//////////////
-	ConversionLogic pesosDolar = new ConversionLogic(ConversionValor.getPesosDolar(), (String) Arquitectura.getPossibilitisConversion(0));
-	ConversionLogic dolarEuro = new ConversionLogic(ConversionValor.getDolarEuro(), (String) Arquitectura.getPossibilitisConversion(1));
-	ConversionLogic dolarLibra = new ConversionLogic(ConversionValor.getDolarLibras(), (String) Arquitectura.getPossibilitisConversion(2));
-	ConversionLogic dolarYen = new ConversionLogic(ConversionValor.getDolarYen(), (String) Arquitectura.getPossibilitisConversion(3));
-	ConversionLogic dolarWonCoreano = new ConversionLogic(ConversionValor.getDolarWonCoreano(), (String) Arquitectura.getPossibilitisConversion(4));
-	
-	List<ConversionLogic> lista = Arrays.asList(pesosDolar, dolarEuro, dolarLibra, dolarYen, dolarWonCoreano);
 	
 	public static void main(String[] args) {
-		
-		System.out.println());
-		
+
 		
 		String menuPrincipal = (String)JOptionPane.showInputDialog(null, "Escoge la conversion\n", "Currency "
 				+ "Converted", JOptionPane.PLAIN_MESSAGE, null, Arquitectura.getPossibilitis(),"Conversor Monedas");
@@ -26,23 +15,69 @@ public class MainMenuInterface {
 		
 		if(Arquitectura.getPossibilitis(0).equals(menuPrincipal)) {
 			ConversionMonedas();
+		}else {
+			ConversionTemperatura();
 		}
 	}
 	
 	
 	public static void ConversionMonedas() {
+		double valorMoneda = 0;
+		ConversionLogic convertidor  = new ConversionLogic();
+		
 		String eleccionConversion = (String)JOptionPane.showInputDialog(null, "Escoge la conversion\n", "Currency "
 				+ "Converted", JOptionPane.PLAIN_MESSAGE, null, Arquitectura.getPossibilitisConversion(),"Conversor Monedas");
 		
-		double valorMoneda = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese valor a convertir"));
-		ResultadoConversion(eleccionConversion, valorMoneda);
+		try {
+			valorMoneda = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese valor a convertir"));
+			DecimalFormat decimalFormat = new DecimalFormat("###.##");
+			
+			JOptionPane.showMessageDialog(null, "Su resultado de conversion" + " " + eleccionConversion+ " son $" + 
+					decimalFormat.format(convertidor.getConversion(valorMoneda, eleccionConversion)));
+				EleccinFinalizarPrograma();
+				
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Solo se aceptan valores numericos con punto.");
+			CancelarPrograma();
+		}
 		
-		if(Arquitectura.getPossibilitisConversion().equals(eleccionConversion)) {
-			System.out.println(Arquitectura.getPossibilitisConversion());
+	}
+	
+	public static void ConversionTemperatura() {
+		double valorTemperatura = 0;
+		ConversionLogic convertidor  = new ConversionLogic();
+		
+		String eleccionConversionTemperatura = (String)JOptionPane.showInputDialog(null, "Escoge la conversion\n", "Temperature "
+				+ "Converted", JOptionPane.PLAIN_MESSAGE, null, Arquitectura.getPosibilidadesTemperatura(),"Conversor Temperatura");
+		
+		try {
+			
+			valorTemperatura = Double.parseDouble(JOptionPane.showInputDialog(null, "Ingrese valor a convertir"));
+			DecimalFormat decimalFormat = new DecimalFormat("###.##");
+			
+			JOptionPane.showMessageDialog(null, "Su resultado de conversion" + " " + eleccionConversionTemperatura  + " son $" + 
+					decimalFormat.format(convertidor.getconversionTemperatura(valorTemperatura, eleccionConversionTemperatura)));
+			EleccinFinalizarPrograma();
+			
+		} catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(null, "Solo se aceptan valores numericos con punto.");
+			CancelarPrograma();
 		}
 	}
-	public static void ResultadoConversion(String eleccionConversion, double valorMoneda) {
-		
+	
+	public static void EleccinFinalizarPrograma() {
+		// 0 SI, 1 NO, 2 CACNCELAR;
+		int eleccionContinuar =  JOptionPane.showConfirmDialog(null, "Desea Continuar?");
+		switch(eleccionContinuar) {
+		case 0: main(null);
+		case 1: CancelarPrograma(); break;
+		case 2: CancelarPrograma();	break;
+		}
 	}
-
+	
+	public static void CancelarPrograma() {
+		JOptionPane.showMessageDialog(null,"Programa Finalizado");
+		System.exit(0);
+	}
+	
 }
